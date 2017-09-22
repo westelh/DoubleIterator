@@ -5,6 +5,7 @@ CC_OPT_RELEASE=-O2
 LD=ar rcs
 LD_OPT=
 SRC_DIR=src
+INCLUDE=include
 BUILD_DIR=build
 SOURCES  = $(wildcard $(SRC_DIR)/*.cpp)
 OBJECTS  = $(addprefix $(BUILD_DIR)/, $(subst .cpp,.o,$(notdir $(SOURCES))))
@@ -32,7 +33,7 @@ libdblitr.a: $(OBJECTS)
 	$(LD) $@ $^ $(LD_OPT)
 
 $(BUILD_DIR)/%.o: $(SOURCES) build_dir
-	$(CC) -o $@ -c $(SOURCES) $(CC_OPT)
+	$(CC) -o $@ -c $(SOURCES) -I$(INCLUDE) $(CC_OPT)
 
 .PHONY: clean
 clean:
