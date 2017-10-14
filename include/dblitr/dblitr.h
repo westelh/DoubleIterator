@@ -1,10 +1,9 @@
-#ifndef INCLUDE_DBLITR_H
-#define INCLUDE_DBLITR_H
+#pragma once
 
 namespace elh {
 	class doubled_iterator final {
-		
+		int abs_m;
+	public:
+		int abs() const noexcept;
 	};
 }
-
-#endif // INCLUDE_DBLITR_H
