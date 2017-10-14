@@ -43,8 +43,8 @@ build_dir:
 libdblitr.a: $(OBJECTS)
 	$(LD) $@ $^ $(LD_OPT)
 
-test_all: $(TESTSRCS)
-	$(CC) -o $@ $^ -Icatch/include $(CC_OPT)
+test_all: $(TESTSRCS) libdblitr.a
+	$(CC) -o $@ $(TESTSRCS) -Icatch/include -I$(INCLUDE) $(CC_OPT) -L./ -ldblitr
 
 $(BUILD_DIR)/%.o: $(SOURCES) build_dir
 	$(CC) -o $@ -c $(SOURCES) -I$(INCLUDE) $(CC_OPT)
