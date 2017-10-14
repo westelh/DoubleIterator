@@ -1,5 +1,5 @@
 CC=g++
-CC_OPT=-Wall -W
+CC_OPT=-Wall -W -std=c++14
 CC_OPT_DEBUG=-g3 -O0
 CC_OPT_RELEASE=-O2
 
