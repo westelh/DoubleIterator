@@ -6,6 +6,15 @@ namespace elh {
 
     template <int Width, int Height>
 	class doubled_iterator final {
+    public:
+        using coord = std::pair<int, int>;
+
+    protected:
+        static coord cast_to_coord(int abs) {
+            return coord{abs%Width, abs/Height};
+        }
+
+    private:
 		int abs_m;  // absolute position through the range
 
 	public:
