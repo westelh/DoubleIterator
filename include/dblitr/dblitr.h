@@ -15,6 +15,11 @@ namespace elh {
             return coord{abs%Width, abs/Height};
         }
 
+        // coord to abs
+        static int cast_to_abs(const coord& c) {
+            return c.first + Width*c.second;
+        }
+
     private:
 		int abs_m;  // absolute position through the range
 
