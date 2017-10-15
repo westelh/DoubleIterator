@@ -11,12 +11,12 @@ namespace elh {
 
     protected:
         // abs to x and y coordinate
-        static coord cast_to_coord(int abs) {
+        static coord cast_to_coord(int abs) noexcept {
             return coord{abs%Width, abs/Height};
         }
 
         // coord to abs
-        static int cast_to_abs(const coord& c) {
+        static int cast_to_abs(const coord& c) noexcept {
             return c.first + Width*c.second;
         }
 
