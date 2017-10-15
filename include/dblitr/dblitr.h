@@ -10,5 +10,8 @@ namespace elh {
 
         // get the absolute positon
 		int abs() const noexcept;
+
+        // set the absolute position
+        void set_abs(int abs) noexcept;
 	};
 }

@@ -7,3 +7,7 @@ int elh::doubled_iterator::abs() const noexcept {
     return abs_m;
 }
 // ------------------------------------------------------------------
+void elh::doubled_iterator::set_abs(int abs) noexcept {
+    abs_m = abs;
+}
+// ------------------------------------------------------------------
