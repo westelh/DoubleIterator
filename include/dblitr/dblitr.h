@@ -26,6 +26,8 @@ namespace elh {
 	public:
         // construct with a absolute position
         doubled_iterator(int abs): abs_m{abs} {}
+        // construct with a coordinate
+        doubled_iterator(const coord& c): abs_m{cast_to_abs(c)} {}
 
         // get the absolute positon
 		int abs() const noexcept { return abs_m; }
