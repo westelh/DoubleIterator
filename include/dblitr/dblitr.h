@@ -34,5 +34,8 @@ namespace elh {
 
         // set the absolute position (should start with 0)
         void set_abs(int abs) noexcept { abs_m = abs; }
+
+        // get the coordinate
+        coord crd() const noexcept { return cast_to_coord(abs_m); }
 	};
 }
