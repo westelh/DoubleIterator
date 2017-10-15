@@ -10,6 +10,7 @@ namespace elh {
         using coord = std::pair<int, int>;
 
     protected:
+        // abs to x and y coordinate
         static coord cast_to_coord(int abs) {
             return coord{abs%Width, abs/Height};
         }
