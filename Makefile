@@ -17,7 +17,7 @@ OBJECTS  = $(addprefix $(BUILD_DIR)/, $(subst .cpp,.o,$(notdir $(SOURCES))))
 TESTSRCS = $(wildcard test/*.cpp)
 
 RM=rm -r
-RM_TARGETS=build
+RM_TARGETS=build libdblitr.a test_all
 
 .PHONY: all
 all: debug
