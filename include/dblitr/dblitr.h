@@ -5,7 +5,7 @@ namespace elh {
 		int abs_m;  // absolute position through the range
 
 	public:
-        // construct with absolute position
+        // construct with a absolute position
         doubled_iterator(int abs);
 
         // get the absolute positon
