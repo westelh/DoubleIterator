@@ -40,4 +40,9 @@ namespace elh {
 
         void set_crd(const coord& c) noexcept { abs_m = cast_to_abs(c); }
 	};
+
+    template <int Width, int Height>
+    bool operator==(const doubled_iterator<Width, Height>& lhs, const doubled_iterator<Width, Height>& rhs) noexcept {
+        return lhs.abs() == rhs.abs();
+    }
 }

@@ -40,3 +40,15 @@ TEST_CASE("setting position by coord", "[]") {
         REQUIRE(i.crd().second == 3);
     }
 }
+
+TEST_CASE("testing of operator ==", "[operator]") {
+    elh::doubled_iterator<10, 10> i{31};
+    elh::doubled_iterator<10, 10> h{31};
+    elh::doubled_iterator<10, 10> j{12};
+
+    SECTION("checking of equality") {
+        REQUIRE(i == h);
+        REQUIRE_FALSE(i == j);
+        REQUIRE_FALSE(h == j);
+    }
+}
