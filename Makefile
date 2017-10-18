@@ -17,7 +17,7 @@ OBJECTS  = $(addprefix $(BUILD_DIR)/, $(subst .cpp,.o,$(notdir $(SOURCES))))
 TESTSRCS = $(wildcard test/*.cpp)
 
 RM=rm -r
-RM_TARGETS=build libdblitr.a test_all
+RM_TARGETS=build 
 
 .PHONY: all
 all: debug
@@ -31,20 +31,20 @@ release: CC_OPT+=$(CC_OPT_RELEASE)
 release: build 
 
 .PHONY: build
-build: libdblitr.a
+build: $(BUILD_DIR)/libdblitr.a
 
 .PHONY: test
-test: test_all
+test: $(BUILD_DIR)/test_all
 	./$^
 
 build_dir:
 	mkdir -p build
 
-libdblitr.a: $(OBJECTS)
+$(BUILD_DIR)/libdblitr.a: $(OBJECTS)
 	$(LD) $@ $^ $(LD_OPT)
 
-test_all: $(TESTSRCS) libdblitr.a
-	$(CC) -o $@ $(TESTSRCS) -Icatch/include -I$(INCLUDE) $(CC_OPT) -L./ -ldblitr
+$(BUILD_DIR)/test_all: $(TESTSRCS) $(BUILD_DIR)/libdblitr.a
+	$(CC) -o $@ $(TESTSRCS) -Icatch/include -I$(INCLUDE) $(CC_OPT) -L$(BUILD_DIR) -ldblitr
 
 $(BUILD_DIR)/%.o: $(SOURCES) build_dir
 	$(CC) -o $@ -c $(SOURCES) -I$(INCLUDE) $(CC_OPT)
