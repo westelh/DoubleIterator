@@ -1,5 +1,5 @@
 CC=g++
-CC_OPT=-Wall -W -std=c++14
+CC_OPT= -Wall -W -std=c++14
 CC_OPT_DEBUG=-g3 -O0
 CC_OPT_RELEASE=-O2
 
@@ -30,12 +30,17 @@ debug: build
 release: CC_OPT+=$(CC_OPT_RELEASE)
 release: build 
 
+.PHONY: coverage
+coverage: build
+
 .PHONY: build
 build: $(BUILD_DIR)/libdblitr.a
 
 .PHONY: test
 test: $(BUILD_DIR)/test_all
-	./$^
+	cd build;\
+	./test_all;\
+	cd ..
 
 build_dir:
 	mkdir -p build
