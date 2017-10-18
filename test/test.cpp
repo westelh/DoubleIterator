@@ -25,3 +25,18 @@ TEST_CASE("abs set and get", "[]") {
     i.set_abs(100);
     REQUIRE(i.abs() == 100);
 }
+
+TEST_CASE("setting position by coord", "[]") {
+    elh::doubled_iterator<12, 12> i{32};
+    elh::doubled_iterator<12, 12>::coord pos{1, 3};
+    i.set_crd(pos);
+
+    SECTION("checking with abs") {
+        REQUIRE(i.abs() == 37);
+    }
+
+    SECTION("checking with crd") {
+        REQUIRE(i.crd().first == 1);
+        REQUIRE(i.crd().second == 3);
+    }
+}

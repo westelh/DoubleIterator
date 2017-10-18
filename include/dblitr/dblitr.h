@@ -37,5 +37,7 @@ namespace elh {
 
         // get the coordinate
         coord crd() const noexcept { return cast_to_coord(abs_m); }
+
+        void set_crd(const coord& c) noexcept { abs_m = cast_to_abs(c); }
 	};
 }
