@@ -1,0 +1,16 @@
+sudo: false
+language: cpp
+
+matrix:
+  include:
+    - compiler: gcc
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-7
+      env: COMPILER=g++-7
+
+script:
+    make CC=$COMPILER test
