@@ -28,6 +28,20 @@ namespace elh {
         doubled_iterator(int abs): abs_m{abs} {}
         // construct with a coordinate
         doubled_iterator(const coord& c): abs_m{cast_to_abs(c)} {}
+        // construct with another iterator
+        doubled_iterator(const doubled_iterator<Width, Height>& itr): abs_m{itr.abs()} {}
+
+        doubled_iterator<Width, Height>& operator=(int abs) noexcept {
+            abs_m = abs;
+            return *this;
+        }
+
+        doubled_iterator<Width, Height>& operator=(const coord& c) noexcept { 
+            abs_m = cast_to_abs(c);
+            return *this;
+        }
+
+        doubled_iterator<Width, Height>& operator=(const doubled_iterator<Width, Height>&) = default;
 
         // get the absolute positon
 		int abs() const noexcept { return abs_m; }
@@ -39,6 +53,18 @@ namespace elh {
         coord crd() const noexcept { return cast_to_coord(abs_m); }
 
         void set_crd(const coord& c) noexcept { abs_m = cast_to_abs(c); }
+
+        doubled_iterator<Width, Height>& operator++() { // prefix
+            abs_m++;
+            return *this;
+        }
+        doubled_iterator<Width, Height>& operator++(int) {  // postfix
+            doubled_iterator<Width, Height> temp = *this;
+            abs_m++;
+            return temp;
+        }
+
+
 	};
 
     template <int Width, int Height>
@@ -65,9 +91,9 @@ namespace elh {
     bool operator<=(const doubled_iterator<Width, Height>& lhs, const doubled_iterator<Width, Height>& rhs) noexcept {
         return !operator>(lhs, rhs);
     }
+    
     template <int Width, int Height>
     bool operator>=(const doubled_iterator<Width, Height>& lhs, const doubled_iterator<Width, Height>& rhs) noexcept {
         return !operator<(lhs, rhs);
     }
-
 }
