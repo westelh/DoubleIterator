@@ -50,4 +50,24 @@ namespace elh {
     bool operator!=(const doubled_iterator<Width, Height>& lhs, const doubled_iterator<Width, Height>& rhs) noexcept {
         return !(lhs == rhs);
     }
+
+    template <int Width, int Height>
+    bool operator>(const doubled_iterator<Width, Height>& lhs, const doubled_iterator<Width, Height>& rhs) noexcept {
+        return lhs.abs() > rhs.abs();
+    }
+
+    template <int Width, int Height>
+    bool operator<(const doubled_iterator<Width, Height>& lhs, const doubled_iterator<Width, Height>& rhs) noexcept {
+        return lhs.abs() < rhs.abs();
+    }
+
+    template <int Width, int Height>
+    bool operator<=(const doubled_iterator<Width, Height>& lhs, const doubled_iterator<Width, Height>& rhs) noexcept {
+        return !operator>(lhs, rhs);
+    }
+    template <int Width, int Height>
+    bool operator>=(const doubled_iterator<Width, Height>& lhs, const doubled_iterator<Width, Height>& rhs) noexcept {
+        return !operator<(lhs, rhs);
+    }
+
 }
