@@ -30,7 +30,10 @@ matrix:
             - llvm-toolchain-precise-3.6
           packages:
             - clang-3.6
-      env: COMPILER=clang++-3.6
+            - libc++-dev
+      env:
+        - COMPILER=clang++-3.6
+        - CPLOPT=-stdlib=libc++
     - compiler: clang
       addons:
         apt:
@@ -39,10 +42,13 @@ matrix:
             - llvm-toolchain-precise-3.9
           packages:
             - clang-3.9
-      env: COMPILER=clang++-3.9
+            - libc++-dev
+      env:
+        - COMPILER=clang++-3.9
+        - CPLOPT=-stdlib=libc++
 
 script:
-  make CC=$COMPILER CC_OPT="-std=c++14 -fprofile-arcs -ftest-coverage" test
+  make CC=$COMPILER CC_OPT="-std=c++14 -fprofile-arcs -ftest-coverage $CPLOPT" test
 
 after_success:
   - coveralls --exclude "catch" --exclude "test"
