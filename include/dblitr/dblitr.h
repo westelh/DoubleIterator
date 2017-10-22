@@ -58,7 +58,7 @@ namespace elh {
             abs_m++;
             return *this;
         }
-        doubled_iterator<Width, Height>& operator++(int) {  // postfix
+        doubled_iterator<Width, Height> operator++(int) {  // postfix
             doubled_iterator<Width, Height> temp = *this;
             abs_m++;
             return temp;
