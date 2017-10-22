@@ -64,7 +64,15 @@ namespace elh {
             return temp;
         }
 
-
+        doubled_iterator<Width, Height>& operator--() {
+            --abs_m;
+            return *this;
+        }
+        doubled_iterator<Width, Height> operator--(int) {
+            doubled_iterator<Width, Height> temp = *this;
+            --abs_m;
+            return temp;
+        }
 	};
 
     template <int Width, int Height>
