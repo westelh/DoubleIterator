@@ -94,3 +94,16 @@ TEST_CASE("increment operator test") {
         REQUIRE(orig.abs() == 21);
     }
 }
+
+
+TEST_CASE("decrement operator test") {
+    SECTION("prefix version") {
+        elh::doubled_iterator<10, 10> orig{20};
+        REQUIRE((--orig).abs() == 19);
+    }
+    SECTION("postfix version") {
+        elh::doubled_iterator<10, 10> orig{20};
+        REQUIRE((orig--).abs() == 20);
+        REQUIRE(orig.abs() == 19);
+    }
+}
