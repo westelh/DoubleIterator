@@ -41,14 +41,44 @@ TEST_CASE("setting position by coord", "[]") {
     }
 }
 
-TEST_CASE("testing of operator ==", "[operator]") {
-    elh::doubled_iterator<10, 10> i{31};
-    elh::doubled_iterator<10, 10> h{31};
-    elh::doubled_iterator<10, 10> j{12};
+TEST_CASE("operators test", "[operator]") {
+    elh::doubled_iterator<10, 10> i{12};
+    elh::doubled_iterator<10, 10> h{12};
+    elh::doubled_iterator<10, 10> j{31};
 
-    SECTION("checking of equality") {
+    SECTION("checking operator==") {
         REQUIRE(i == h);
         REQUIRE_FALSE(i == j);
         REQUIRE_FALSE(h == j);
+    }
+
+    SECTION("checking operator!=") {
+        REQUIRE_FALSE(i != h);
+        REQUIRE(i != j);
+        REQUIRE(h != j);
+    }
+
+    SECTION("checking operator>") {
+        REQUIRE(j > h);
+        REQUIRE_FALSE(i > h);
+        REQUIRE_FALSE(h > j);
+    }
+
+    SECTION("checking operator<") {
+        REQUIRE(i < j);
+        REQUIRE_FALSE(i < h);
+        REQUIRE_FALSE(j < i);
+    }
+
+    SECTION("checking operator>=") {
+        REQUIRE(i >= h);
+        REQUIRE(j >= h);
+        REQUIRE_FALSE(i >= j);
+    }
+    
+    SECTION("checking operator<=") {
+        REQUIRE(h <= i);
+        REQUIRE(h <= j);
+        REQUIRE_FALSE(j <= h);
     }
 }
