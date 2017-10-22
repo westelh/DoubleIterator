@@ -5,7 +5,7 @@
 namespace elh {
 
     template <int Width, int Height>
-	class doubled_iterator final {
+	class doubled_iterator {
     public:
         using coord = std::pair<int, int>;
 
