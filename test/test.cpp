@@ -82,3 +82,15 @@ TEST_CASE("operators test", "[operator]") {
         REQUIRE_FALSE(j <= h);
     }
 }
+
+TEST_CASE("increment operator test") {
+    SECTION("prefix version") {
+        elh::doubled_iterator<10, 10> orig{20};
+        REQUIRE((++orig).abs() == 21);
+    }
+    SECTION("postfix version") {
+        elh::doubled_iterator<10, 10> orig{20};
+        REQUIRE((orig++).abs() == 20);
+        REQUIRE(orig.abs() == 21);
+    }
+}
