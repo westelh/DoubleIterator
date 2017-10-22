@@ -2,12 +2,22 @@
 #include "catch.hpp"
 #include "dblitr/dblitr.h"
 
-TEST_CASE("abs() returns the number given in constructor", "[]") {
-    elh::doubled_iterator<10, 10> i{8};
-    REQUIRE(i.abs() == 8);
+#ifndef TESTING_WIDTH
+#define TESTING_WIDTH 10
+#endif
+#ifndef TESTING_HEIGHT
+#define TESTING_HEIGHT 10
+#endif
 
-    elh::doubled_iterator<10, 10> h{4212};
-    REQUIRE(h.abs() == 4212);
+constexpr int width = TESTING_WIDTH;
+constexpr int height = TESTING_HEIGHT;
+using itr = elh::doubled_iterator<width, height>;
+
+TEST_CASE("abs() returns the number given in constructor", "[]") {
+    for (auto i=0; i<width*height; ++i) {
+        itr h{i};
+        REQUIRE(h.abs() == i);
+    }
 }
 
 TEST_CASE("crd() returns the number given in constructor", "[]") {
