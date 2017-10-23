@@ -38,7 +38,7 @@ TEST_CASE("abs set and get", "[]") {
 
 TEST_CASE("setting position by coord", "[]") {
     elh::doubled_iterator<12, 12> i{32};
-    elh::doubled_iterator<12, 12>::coord pos{1, 3};
+    elh::coord pos{1, 3};
     i.set_crd(pos);
 
     SECTION("checking with abs") {
@@ -49,6 +49,10 @@ TEST_CASE("setting position by coord", "[]") {
         REQUIRE(i.crd().first == 1);
         REQUIRE(i.crd().second == 3);
     }
+}
+
+TEST_CASE("converting row index to coord", "") {
+
 }
 
 TEST_CASE("operators test", "[operator]") {
