@@ -7,6 +7,7 @@ namespace elh {
     // coordinate
     using coord = std::pair<int, int>;
 
+    // forward declaration
     template <int Width, int Height>
     class doubled_iterator;
 
