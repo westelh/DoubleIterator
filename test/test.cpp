@@ -13,6 +13,15 @@ constexpr int width = TESTING_WIDTH;
 constexpr int height = TESTING_HEIGHT;
 using itr = elh::doubled_iterator<width, height>;
 
+TEST_CASE("converting to coordinate", "[base]") {
+    SECTION("central value") {
+        int central_abs = width*height/2;
+        auto crd = elh::cast_to_coord<width, height>(central_abs);
+        REQUIRE(crd.first == 5);
+        REQUIRE(crd.second == 0);
+    } 
+}
+
 TEST_CASE("abs() returns the number given in constructor", "[]") {
     for (auto i=0; i<width*height; ++i) {
         itr h{i};
